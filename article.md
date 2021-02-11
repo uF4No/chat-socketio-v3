@@ -1,21 +1,21 @@
 ## What is socket.io
 
-Socket.io is a Javascript library for web apps that allows real time communication between clients and servers. It's built on top of the Websockets API (client) and Node.js (server). If you want to learnt what Websockets are, watch [this super quick video](https://www.youtube.com/watch?v=ZbrEztkwcw8 'websockets explained') to understand the basic concepts.
+Socket.io is a Javascript library for web apps that allows real-time communication between clients and servers. It's built on top of the Websockets API (client) and Node.js (server). If you want to learn what Websockets are, watch [this super quick video](https://www.youtube.com/watch?v=ZbrEztkwcw8 'websockets explained') to understand the basic concepts.
 The most common use cases for Websockets and socket.io are chat applications or a social media feeds in which a user's page (client) receives messages or posts from other users.
 
-In this article we'll build a simple chat application that allows users to talk to each other in real time. Our application will consist in two separate components, a server and a client, each one with different responsabilities:
+In this article, we'll build a simple chat application that allows users to talk to each other in real-time. Our application will consist of two separate components, a server, and a client, each one with different responsibilities:
 
-### Chat server responsabilities
+### Chat server responsibilities
 
 - Serve the HTML, CSS and JavaScript client files to the users
 - Start the Socket.io connection
 - Receive events from clients (like a new chat message) and broadcast them to other clients
 
-### Chat client responsabilities
+### Chat client responsibilities
 
 - Load socket.io client library from a CDN
-- Stablish connection with the Socket.io running in our server
-- Ask user to enter his name so we can identify him in the chat
+- Establish connection with the Socket.io running in our server
+- Ask the user to enter his name so we can identify him in the chat
 - Emit and receive events to/from Socket.io running in our server
 - Add our own messages to the chat via JavaScript
 
@@ -154,7 +154,7 @@ Let's see what this code does:
 - Imports socket.io and attach it to our app server
 - With `io.on('connection)` we detect a new connection and log a message in the console including the socket object, which will contain some information from the client.
 
-Now we have to modify our index.html document to load the socket.io library from a CDN and also load a `chat.js` file that we're going to create inside the _client_ folder our server:
+Now we have to modify our index.html document to load the socket.io library from a CDN and also load a `chat.js` file that we're going to create inside the _client_ folder of our server:
 
 ```html
 <!DOCTYPE html>
@@ -202,7 +202,7 @@ Now that we have our Socket.io instance running in the server and our client (th
 
 ### Storing the connected clients
 
-Let's start by storing the information of each client connected to our server. To identify each client, we'll ask the users to enter their name in a promts and aditionally, we'll save their socket id. Modify your `chat.js` file like this:
+Let's start by storing the information of each client connected to our server. To identify each client, we'll ask the users to enter their name in a promt and additionally, we'll save their socket id. Modify your `chat.js` file like this:
 
 ```js
 // FILE /client/chat.js
@@ -225,7 +225,7 @@ socket.on('welcome-message', (data) => {
 })
 ```
 
-We're using the _prompt()_ method to request the username. With _socket.emit()_ we're emmitting to our server. The first paramenter is the event name and the second paramenter is the data we're sending, in this case, just the username. Using _socket.on()_ we capture events sent from the server to the clients.
+We're using the _prompt()_ method to request the username. With _socket.emit()_ we're emitting to our server. The first parameter is the event name and the second parameter is the data we're sending, in this case, just the username. Using _socket.on()_ we capture events sent from the server to the clients.
 
 In our server, we have to capture the event like this:
 
@@ -261,7 +261,7 @@ In summary, the most used functions when working with Socket.io are _socket.emit
 
 ### Handling chat messages
 
-Now that we know how to emit and handle events in both the client and the server, we can start working on the events to send and receive chat messages. But first we need to create the HTML input to enter the message to send and the container that will hold all the conversation's messages.
+Now that we know how to emit and handle events in both the client and the server, we can start working on the events to send and receive chat messages. But first, we need to create the HTML input to enter the message to send and the container that will hold all the conversation's messages.
 
 ```html
 <!DOCTYPE html>
@@ -370,7 +370,7 @@ Now that we know how to emit and handle events in both the client and the server
 </html>
 ```
 
-I'm including some styles to help us position all the elements and differenciate between our own and other user's messages on the chat. There is an empty container with id _chatContainer_ in which we'll append any messages. At the bottom, there is a form with the input and button to send the messages.
+I'm including some styles to help us position all the elements and differentiate between our own and other user's messages on the chat. There is an empty container with id _chatContainer_ in which we'll append any messages. At the bottom, there is a form with the input and button to send the messages.
 
 Moving to our `chat.js` file, we'll create a helper function _addMessage()_ to append messages to the _chatContainer_ and invoke it right after we receive the _welcome-message_ event from the server.
 
@@ -497,8 +497,8 @@ Give it a try and...
 
 There are a couple of things we can do to improve this chat a little bit. For example, we can detect when a client disconnects and send a message to the remaining users. You can find that in the full code in this repository.
 
-## Conclussion
+## Conclusion
 
-Socket.io is a super powerful library and we've just scratched some basic methods from its API but it contains a lot more functionalities like assigning namespaces to sockets so they have different endpoints, create rooms and even integrate it with Redis. Make sure to [check out their documentation](https://socket.io/docs/v3/index.html) to learn more.
+Socket.io is a super powerful library and we've just scratched some basic methods from its API but it contains a lot more functionalities like assigning namespaces to sockets so they have different endpoints, create rooms and, even integrate it with Redis. Make sure to [check out their documentation](https://socket.io/docs/v3/index.html) to learn more.
 
-I hope you find this article useful and it help you create awesome projects using Socket.io!
+I hope you find this article useful and it helps you create awesome projects using Socket.io!

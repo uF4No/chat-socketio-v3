@@ -10,7 +10,7 @@ When a message is sent from a client,the message is broadcasted to the rest of t
 ## Built with
 
 - Node.js
-- Socket.io
+- Socket.io v3
 - HTML
 - CSS
 - JavaScript (Vanilla)
@@ -33,4 +33,4 @@ You can run this app locally with Node.js **or** with Docker:
 
 ## Author
 
-Antonio Ufano - [web](https://antonioufano.com) - [Twitter](https://twitter.com/uf4no)
+Antonio Ufano - [web](https://antonioufano.com) - [twitter](https://twitter.com/uf4no)
